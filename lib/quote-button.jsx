@@ -135,6 +135,8 @@ class QuoteButton extends React.Component {
         }
 
         // Convert domParser back to string
+        // This is the hard way of doing this --- FIX THIS ---
+        content = content.replace( /<body>.+<\/body>/, '<body>'+doc.body.innerHTML+'</body>' );
 
         // Remove this. ( Only for debugging )
         window.$doc = doc;
