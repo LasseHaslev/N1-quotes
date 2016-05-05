@@ -19,18 +19,18 @@ class QuoteButton extends React.Component {
 
     // Test data
     quotes = [
-    {
-        text: 'Jeg lukker mine øyne for å se',
-        author: 'Paul Gauguin'
-    },
-    {
-        text: 'Der alle tenker likt, blir det ikke tenkt mye.',
-        author: 'Walter Lippmann'
-    },
-    {
-        text: 'Alle har talent. Det uvanlige er å ha mot til å følge talentet til de mørke stedene den leder.',
-        author: 'Erica Jong'
-    },
+        {
+            text: 'Jeg lukker mine øyne for å se',
+            author: 'Paul Gauguin'
+        },
+        {
+            text: 'Der alle tenker likt, blir det ikke tenkt mye.',
+            author: 'Walter Lippmann'
+        },
+        {
+            text: 'Alle har talent. Det uvanlige er å ha mot til å følge talentet til de mørke stedene den leder.',
+            author: 'Erica Jong'
+        },
     ];
 
     // Since our button is being injected into the Composer Footer,
@@ -47,7 +47,8 @@ class QuoteButton extends React.Component {
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._getRandomQuote = this._getRandomQuote.bind( this );
         this._insertQuote = this._insertQuote.bind( this );
-        this._createQuoteTag = this._createQuoteTag.bind( this );
+        this._createQuoteTags = this._createQuoteTags.bind( this );
+        this._getEmailContent = this._getEmailContent.bind( this );
 
         // Search for {{ quote }} and add tags with qoute
     }
@@ -61,11 +62,20 @@ class QuoteButton extends React.Component {
 
     // Create quote tag
     // {{ quote }} to <span class="random-quote"></span>
-    _createQuoteTag() {
+    _createQuoteTags() {
         console.log('Here we will seach for {{ quote }} and insert <span class="random-quote">{{ quoteFormat }}</span>');
+
+        var content = this._getEmailContent();
+
+        content.replace( /\[\w+quote\w+\]/g, '<span class="random-quote"></span>' );
 
         // Afterwards we insert quote to tag
         this._insertQuote();
+    }
+
+    // Get content of email
+    _getEmailContent() {
+        return 'email content string';
     }
 
     // Search for all span.random-quote and replace its content with new quote data
