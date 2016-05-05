@@ -73,8 +73,11 @@ class QuoteButton extends React.Component {
         this._insertQuote();
     }
 
+    // Replace mail
+
     // Get content of email
     _getEmailContent() {
+        console.log(this.props.draft.body);
         return 'email content string';
     }
 
@@ -88,6 +91,7 @@ class QuoteButton extends React.Component {
         console.log( 'Refresh quote' );
         // console.log(this._getRandomQuote);
         console.log(this._getRandomQuote());
+        this._getEmailContent();
     }
 
     // Get random quote
