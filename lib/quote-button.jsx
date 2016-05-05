@@ -1,4 +1,3 @@
-
 import request from 'request'
 
 import {
@@ -42,10 +41,15 @@ class QuoteButton extends React.Component {
         session: React.PropTypes.object.isRequired,
     };
 
+    // We need to bind 'this' to each function we want to use "this" in
     constructor() {
         super();
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._getRandomQuote = this._getRandomQuote.bind( this );
+        this._insertQuote = this._insertQuote.bind( this );
+        this.createQuoteTag = this.createQuoteTag.bind( this );
+
+        // Search for {{ quote }} and add tags with qoute
     }
 
 
@@ -55,12 +59,28 @@ class QuoteButton extends React.Component {
         return nextProps.session !== this.props.session;
     }
 
+    // Create quote tag
+    // {{ quote }} to <span class="random-quote"></span>
+    _createQuoteTag() {
+        console.log('Here we will seach for {{ quote }} and insert <span class="random-quote">{{ quoteFormat }}</span>');
+
+        // Afterwards we insert quote to tag
+        this._insertQuote();
+    }
+
+    // Search for all span.random-quote and replace its content with new quote data
+    _insertQuote() {
+        console.log('Search for all span.random-quote and replace its content with new quote data');
+    }
+
+    // Refresh quote
     _onQuoteRefresh() {
         console.log( 'Refresh quote' );
         // console.log(this._getRandomQuote);
         console.log(this._getRandomQuote());
     }
 
+    // Get random quote
     _getRandomQuote() {
         return this.quotes[Math.floor(Math.random()*this.quotes.length)];
     }
