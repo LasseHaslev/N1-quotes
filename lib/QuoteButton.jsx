@@ -29,7 +29,6 @@ class QuoteButton extends React.Component {
 
     quoteHandler = null;
 
-
     // We need to bind 'this' to each function we want to use "this" in
     constructor() {
         super();
@@ -47,7 +46,6 @@ class QuoteButton extends React.Component {
         var content = this.quoteHandler.quotify( this._getEmailContent() );
         this._replaceEmailContent( content );
     }
-
 
     shouldComponentUpdate(nextProps) {
         // Our render method doesn't use the provided `draft`, and the draft changes
@@ -74,6 +72,11 @@ class QuoteButton extends React.Component {
 
         // Return the new content
         return newContent;
+    }
+
+    // Run Render quotes on first run
+    componentWillMount() {
+        this._onQuoteRefresh();
     }
 
     render() {
