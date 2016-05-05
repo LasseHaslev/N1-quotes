@@ -47,7 +47,7 @@ class QuoteButton extends React.Component {
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._getRandomQuote = this._getRandomQuote.bind( this );
         this._insertQuote = this._insertQuote.bind( this );
-        this.createQuoteTag = this.createQuoteTag.bind( this );
+        this._createQuoteTag = this._createQuoteTag.bind( this );
 
         // Search for {{ quote }} and add tags with qoute
     }
