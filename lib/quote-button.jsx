@@ -91,7 +91,7 @@ class QuoteButton extends React.Component {
     }
 
     // Search for all span.random-quote and replace its content with new quote data
-    _insertQuotesToTags( content( content ) {
+    _insertQuotesToTags( content ) {
 
         // Find each span.class element
 
