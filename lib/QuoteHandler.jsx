@@ -53,7 +53,7 @@ class QuoteButton {
     // Create quote tag
     // [ quote ] to <span class="random-quote"></span>
     _createQuoteTags( content ) {
-        return content.replace( /\[ *quote *\]/g, '<span class="random-quote"></span>' );
+        return content.replace( /\[ *[<spelling class="misspelled">]*quote[</spelling>]* *\]/g, '<span class="random-quote"></span>' );
     }
 
     // Format the quote object to quote string
