@@ -49,6 +49,7 @@ class QuoteButton extends React.Component {
         this._createQuoteTags = this._createQuoteTags.bind( this );
         this._getEmailContent = this._getEmailContent.bind( this );
         this._insertQuotesToTags = this._insertQuotesToTags.bind( this );
+        this._replaceEmailContent = this._replaceEmailContent.bind( this );
         this._formatQuoteObjectToString = this._formatQuoteObjectToString.bind( this );
 
         // Search for [ quote ] and add tags with qoute
@@ -74,6 +75,9 @@ class QuoteButton extends React.Component {
         // Insert quote to each random quote tag
         content = this._insertQuotesToTags( content );
 
+        // Save the changes
+        content = this._replaceEmailContent( content );
+
         console.log(content);
 
     }
@@ -89,6 +93,22 @@ class QuoteButton extends React.Component {
     // Get content of email
     _getEmailContent() {
         return this.props.draft.body;
+    }
+
+    // Replace email body
+    _replaceEmailContent( newContent ) {
+        // The new text of the draft is our translated response, plus any quoted text
+        // that we didn't process.
+        // translated = QuotedHTMLTransformer.appendQuotedHTML(translated, draftHtml);
+
+        // To update the draft, we add the new body to it's session. The session object
+        // automatically marshalls changes to the database and ensures that others accessing
+        // the same draft are notified of changes.
+        this.props.session.changes.add({body: newContent});
+        this.props.session.changes.commit();
+
+        // Return the new content
+        return newContent;
     }
 
     // Format the quote object to quote string
