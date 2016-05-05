@@ -44,11 +44,12 @@ class QuoteButton extends React.Component {
     // We need to bind 'this' to each function we want to use "this" in
     constructor() {
         super();
-        this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._getRandomQuote = this._getRandomQuote.bind( this );
-        this._insertQuotesToTags = this._insertQuotesToTags.bind( this );
+        this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._createQuoteTags = this._createQuoteTags.bind( this );
         this._getEmailContent = this._getEmailContent.bind( this );
+        this._insertQuotesToTags = this._insertQuotesToTags.bind( this );
+        this._formatQuoteObjectToString = this._formatQuoteObjectToString.bind( this );
 
         // Search for [ quote ] and add tags with qoute
     }
@@ -88,6 +89,11 @@ class QuoteButton extends React.Component {
     // Get content of email
     _getEmailContent() {
         return this.props.draft.body;
+    }
+
+    // Format the quote object to quote string
+    _formatQuoteObjectToString( quoteObject ) {
+        return quoteObject.text + ' - ' + quoteObject.author;
     }
 
     // Search for all span.random-quote and replace its content with new quote data
