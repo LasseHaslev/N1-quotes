@@ -86,7 +86,7 @@ class QuoteButton extends React.Component {
     // Replace mail
 
     // Get content of email
-    _getEmailContent() {
+    _getEmailContent() {      
         return this.props.draft.body;
     }
 
