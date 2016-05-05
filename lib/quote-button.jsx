@@ -46,7 +46,7 @@ class QuoteButton extends React.Component {
         super();
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._getRandomQuote = this._getRandomQuote.bind( this );
-        this._insertQuote = this._insertQuote.bind( this );
+        this._insertQuotesToTags = this._insertQuotesToTags.bind( this );
         this._createQuoteTags = this._createQuoteTags.bind( this );
         this._getEmailContent = this._getEmailContent.bind( this );
 
