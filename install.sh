@@ -7,7 +7,7 @@ nylaspath='~/.nylas/dev/packages/'
 git clone https://github.com/LasseHaslev/N1-quotes.git $nylaspath;
 
 # cd into repository
-cd $nylaspath + 'random-signature-quotes';
+cd $nylaspath > 'random-signature-quotes';
 
 # Install node
 npm install
