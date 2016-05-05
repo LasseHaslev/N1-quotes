@@ -46,7 +46,7 @@ class QuoteButton extends React.Component {
         super();
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
         this._getRandomQuote = this._getRandomQuote.bind( this );
-        this._insertQuote = this._insertQuote.bind( this );
+        this._insertQuotesToTags = this._insertQuotesToTags.bind( this );
         this._createQuoteTags = this._createQuoteTags.bind( this );
         this._getEmailContent = this._getEmailContent.bind( this );
 
@@ -64,12 +64,16 @@ class QuoteButton extends React.Component {
     _onQuoteRefresh() {
         console.log( 'Refresh quote' );
 
+        // Get tags in body
         var content = this._getEmailContent();
 
+        // Change [ quote ] to <span class="random-quote"></span>
         content = this._createQuoteTags( content );
 
-        console.log(content);
+        // Insert quote to each random quote tag
+        content = this._insertQuotesToTags( content );
 
+        console.log(content);
 
     }
 
@@ -87,10 +91,19 @@ class QuoteButton extends React.Component {
     }
 
     // Search for all span.random-quote and replace its content with new quote data
-    _insertQuote() {
-        var emailContent = this._getEmailContent();
-        var result = emailContent.replace('[ quote ]', 'This is a quote');
-        console.log('Search for all span.random-quote and replace its content with new quote data');
+    _insertQuotesToTags( content ) {
+
+        // Find each span.class element
+
+        // Loop each
+
+        // Format quote
+
+        // Insert quote to tag
+
+        // return new content
+        return content;
+
     }
 
     // Get random quote
