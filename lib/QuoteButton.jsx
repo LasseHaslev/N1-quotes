@@ -13,9 +13,7 @@ import {
   RetinaImg,
 } from 'nylas-component-kit';
 
-import {
-    QuoteHandler
-} from './QuoteHandler'
+import QuoteHandler from './QuoteHandler'
 
 class QuoteButton extends React.Component {
     // Adding a `displayName` makes debugging React easier
@@ -28,13 +26,16 @@ class QuoteButton extends React.Component {
         draft: React.PropTypes.object.isRequired,
         session: React.PropTypes.object.isRequired,
     };
-    
-    var quoteHandler = new QuoteHandler();
+
+    quoteHandler = null;
+
 
     // We need to bind 'this' to each function we want to use "this" in
     constructor() {
         super();
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
+
+        this.quoteHandler = new QuoteHandler();
 
         // Search for [ quote ] and add tags with qoute
     }
@@ -65,7 +66,7 @@ class QuoteButton extends React.Component {
 
         // Return the new content
         return newContent;
-    }}
+    }
 
     // Refresh quote
     _onQuoteRefresh() {
