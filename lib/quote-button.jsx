@@ -50,7 +50,7 @@ class QuoteButton extends React.Component {
         this._createQuoteTags = this._createQuoteTags.bind( this );
         this._getEmailContent = this._getEmailContent.bind( this );
 
-        // Search for {{ quote }} and add tags with qoute
+        // Search for [ quote ] and add tags with qoute
     }
 
 
@@ -63,24 +63,20 @@ class QuoteButton extends React.Component {
     // Refresh quote
     _onQuoteRefresh() {
         console.log( 'Refresh quote' );
-        // console.log(this._getRandomQuote);
-        console.log(this._getRandomQuote());
 
-        console.log(this._createQuoteTags());
+        var content = this._getEmailContent();
+
+        content = this._createQuoteTags( content );
+
+        console.log(content);
+
 
     }
 
     // Create quote tag
-    // {{ quote }} to <span class="random-quote"></span>
-    _createQuoteTags() {
-        console.log('Here we will seach for {{ quote }} and insert <span class="random-quote">{{ quoteFormat }}</span>');
-
-        var content = this._getEmailContent();
-
+    // [ quote ] to <span class="random-quote"></span>
+    _createQuoteTags( content ) {
         return content.replace( /\[ *quote *\]/g, '<span class="random-quote"></span>' );
-
-        // Afterwards we insert quote to tag
-        this._insertQuote();
     }
 
     // Replace mail
