@@ -13,6 +13,10 @@ import {
   RetinaImg,
 } from 'nylas-component-kit';
 
+import {
+    QuoteHandler
+} from './QuoteHandler'
+
 class QuoteButton extends React.Component {
     // Adding a `displayName` makes debugging React easier
     static displayName = 'QuoteButton';
