@@ -100,10 +100,14 @@ class QuoteButton extends React.Component {
     _insertQuotesToTags( content ) {
 
         // Find each span.class element
-
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(content, "text/html");
+        var randomQuotes = doc.querySelectorAll('span.random-quote');
+   
         // Loop each
-
-        // Format quote
+        for ( String s : randomQuotes ){
+            this._formatQuoteObjectToString( s );
+        }
 
         // Insert quote to tag
 
