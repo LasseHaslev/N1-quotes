@@ -2,7 +2,7 @@ import {
   ComponentRegistry,
 } from 'nylas-exports';
 
-import QuoteButton from './quote-button';
+import QuoteButton from './QuoteButton';
 
 export function activate() {
   ComponentRegistry.register(QuoteButton, {
