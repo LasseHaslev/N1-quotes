@@ -46,7 +46,7 @@ class QuoteButton {
         // Insert quote to each random quote tag
         content = this._insertQuotesToTags( content );
 
-        return content
+        return content;
 
     }
 

@@ -34,10 +34,18 @@ class QuoteButton extends React.Component {
     constructor() {
         super();
         this._onQuoteRefresh = this._onQuoteRefresh.bind( this );
+        this._getEmailContent = this._getEmailContent.bind( this );
+        this._replaceEmailContent = this._replaceEmailContent.bind( this );
 
         this.quoteHandler = new QuoteHandler();
 
         // Search for [ quote ] and add tags with qoute
+    }
+
+    // Refresh quote
+    _onQuoteRefresh() {
+        var content = this.quoteHandler.quotify( this._getEmailContent() );
+        this._replaceEmailContent( content );
     }
 
 
@@ -66,11 +74,6 @@ class QuoteButton extends React.Component {
 
         // Return the new content
         return newContent;
-    }
-
-    // Refresh quote
-    _onQuoteRefresh() {
-        console.log('clicky, clicky');
     }
 
     render() {
