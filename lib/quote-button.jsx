@@ -33,7 +33,7 @@ class QuoteButton extends React.Component {
     }
 
     _onQuoteRefresh() {
-
+        console.log( 'Refresh quote' );
     }
 
     render() {
