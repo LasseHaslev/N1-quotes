@@ -83,12 +83,13 @@ class QuoteButton extends React.Component {
 
     // Get content of email
     _getEmailContent() {
-        console.log('Getting email content');
         return this.props.draft.body;
     }
 
     // Search for all span.random-quote and replace its content with new quote data
     _insertQuote() {
+        var emailContent = this._getEmailContent();
+        var result = emailContent.replace('[ quote ]', 'This is a quote');
         console.log('Search for all span.random-quote and replace its content with new quote data');
     }
 
