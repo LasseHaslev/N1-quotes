@@ -43,7 +43,7 @@ class QuoteButton {
             author: 'Alfred Whitney Griswold'
         },
         {
-            text: 'I can\'t understand why people are frightened of new ideas. I\'m frightened of the old ones.,
+            text: 'I can\'t understand why people are frightened of new ideas. I\'m frightened of the old ones.',
             author: 'John Cage'
         },
         {
