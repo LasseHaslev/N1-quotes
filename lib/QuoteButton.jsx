@@ -98,11 +98,7 @@ class QuoteButton extends React.Component {
                 title="Insert quote…">
                 <RetinaImg
                 mode={RetinaImg.Mode.ContentIsMask}
-                url="nylas://composer-translate/assets/icon-composer-translate@2x.png" />
-                &nbsp;
-                <RetinaImg
-                name="icon-composer-dropdown.png"
-                mode={RetinaImg.Mode.ContentIsMask}/>
+                url="nylas://random-quotes/assets/icon-random-quote@2x.png" />
             </button>
         );
     }

@@ -2,5 +2,3 @@
 [ ] Add settingspage where we can change this file
 
 [ ] Create format textarea where you can self set the format of the quote. ( If you get an object with string, you just return the string; but if you get an object you can combine return object.quote + ' - ' + object.author;  )
-
-[ ] Create new button icon
