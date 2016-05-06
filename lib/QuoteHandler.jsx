@@ -72,7 +72,13 @@ class QuoteButton {
         // Loop each
         for (var i = 0, len = spanElements.length; i < len; i++) {
             var spanElement = spanElements[ i ];
-            var quoteString = this._formatQuoteObjectToString( this._getRandomQuote() );
+
+            do {
+                var quoteString = this._formatQuoteObjectToString( this._getRandomQuote() );
+
+            // Check if the new quote is the same as last time, then get a new quote until we get an unique
+            // Quality check if we have more than 1 quote to check from to prevent endless loop 
+            } while (quoteString == spanElement.innerHTML && this.quotes.length > 1);
 
             // Insert quote to tag
             spanElement.innerHTML = quoteString;
