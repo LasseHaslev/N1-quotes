@@ -41,16 +41,34 @@ class QuoteButton extends React.Component {
         // Search for [ quote ] and add tags with qoute
     }
 
-    // Refresh quote
-    _onQuoteRefresh() {
-        var content = this.quoteHandler.quotify( this._getEmailContent() );
-        this._replaceEmailContent( content );
+    // Run Render quotes on first run
+    componentWillMount() {
+        this._onQuoteRefresh();
     }
 
     shouldComponentUpdate(nextProps) {
         // Our render method doesn't use the provided `draft`, and the draft changes
         // constantly (on every keystroke!) `shouldComponentUpdate` helps keep N1 fast.
         return nextProps.session !== this.props.session;
+    }
+
+    // Refresh quote
+    _onQuoteRefresh() {
+
+        // Get the html draft
+        var draftHtml = this._getEmailContent();
+
+        // Handle draft html
+        var text = QuotedHTMLTransformer.removeQuotedHTML(draftHtml);
+
+        // Do the quote change in text
+        text = this.quoteHandler.quotify( text );
+
+        // Handle back the draft html
+        var handledText = QuotedHTMLTransformer.appendQuotedHTML(text, draftHtml);
+
+        // Save the changes
+        this._replaceEmailContent( handledText );
     }
 
     // Get content of email
@@ -60,10 +78,6 @@ class QuoteButton extends React.Component {
    
     // Replace email body
     _replaceEmailContent( newContent ) {
-        // The new text of the draft is our translated response, plus any quoted text
-        // that we didn't process.
-        // translated = QuotedHTMLTransformer.appendQuotedHTML(translated, draftHtml);
-
         // To update the draft, we add the new body to it's session. The session object
         // automatically marshalls changes to the database and ensures that others accessing
         // the same draft are notified of changes.
@@ -74,11 +88,7 @@ class QuoteButton extends React.Component {
         return newContent;
     }
 
-    // Run Render quotes on first run
-    componentWillMount() {
-        this._onQuoteRefresh();
-    }
-
+    // Render the button
     render() {
         return (
             <button
